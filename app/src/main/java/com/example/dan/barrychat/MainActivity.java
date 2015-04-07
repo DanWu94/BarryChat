@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_main);
 
         Log.i(LOGTAG, "onCreate entered");
 
@@ -53,7 +53,6 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //OnClick actions here
-                mSC.disconnect();
                 System.exit(0);
 
             }
