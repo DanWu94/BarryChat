@@ -33,6 +33,19 @@ public class MainActivity extends Activity {
         mSC = new ServerConnect(this);
         mSC.start();
 
+        //Makes the receiving text area scrollable
+        TextView tv = (TextView) findViewById(R.id.txtServerResponse);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+
+        //Refresh the user list
+        Button buttonRefreshUsr = (Button) findViewById(R.id.btnRefreshUsr);
+        buttonRefreshUsr.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //OnClick actions here
+                mSC.send("WHO");
+            }
+        });
+
         //Send the input command
         cmd = (EditText) findViewById(R.id.cmdInput);
         Button buttonSend = (Button) findViewById(R.id.btnSendCmd);
@@ -43,10 +56,6 @@ public class MainActivity extends Activity {
                 mSC.send(cmdString);
             }
         });
-
-        //Makes the receiving text area scrollable
-        TextView tv = (TextView) findViewById(R.id.txtServerResponse);
-        tv.setMovementMethod(new ScrollingMovementMethod());
 
         //This is an example of how to set events to button clicks
         Button button = (Button) findViewById(R.id.btnKill);

@@ -49,7 +49,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/btnRefreshUsr"
+                android:text="@string/refresh_usr" />
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"

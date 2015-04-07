@@ -7,5 +7,6 @@
     <string name="cmd">Type Command</string>
     <string name="barry">Hello BarryBot!</string>
     <string name="list_title">WHO IS ONLINE</string>
+    <string name="refresh_usr">Refresh</string>
 
 </resources>

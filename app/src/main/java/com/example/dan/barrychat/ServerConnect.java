@@ -97,9 +97,6 @@ public class ServerConnect extends Thread{
                     parentref.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             /**
                              *
                              *
