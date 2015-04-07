@@ -2,6 +2,8 @@ package com.example.dan.barrychat;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
@@ -11,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     private static final String LOGTAG = "MainPAge";
 
