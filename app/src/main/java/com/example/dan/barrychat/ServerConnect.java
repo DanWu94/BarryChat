@@ -2,6 +2,7 @@ package com.example.dan.barrychat;
 
 import android.app.Activity;
 
+import android.util.JsonReader;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -12,6 +13,10 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by leeming
@@ -88,6 +93,7 @@ public class ServerConnect extends Thread{
 
                     //Update GUI with any server responses
                     final TextView txtv = (TextView) parentref.findViewById(R.id.txtServerResponse);
+                    final TextView txtvList = (TextView) parentref.findViewById(R.id.txtUserList);
                     parentref.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -101,10 +107,22 @@ public class ServerConnect extends Thread{
                              *
                              *
                              */
+                            if(message.substring(0,3).equals("WHO")){
+                                try {
+                                    JSONArray userListArr = new JSONArray(message.substring(3));
+                                    txtvList.setText("WHO IS ONLINE");
+                                    for(int i=0;i<userListArr.length();i++){
+                                        String userName = userListArr.getString(i);
+                                        txtvList.setText(txtvList.getText()+"\n"+userName);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            else {
+                                txtv.setText(message+"\n"+txtv.getText());
+                            }
 
-
-
-                            txtv.setText(message+"\n"+txtv.getText());
                         }
                     });
                 }
