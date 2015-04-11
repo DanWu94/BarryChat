@@ -55,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //OnClick actions here
+                mSC.send("DISCONNECT");
                 System.exit(0);
 
             }
