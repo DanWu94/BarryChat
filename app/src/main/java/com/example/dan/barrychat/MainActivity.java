@@ -39,15 +39,6 @@ public class MainActivity extends ActionBarActivity {
         TextView tv = (TextView) findViewById(R.id.txtServerResponse);
         tv.setMovementMethod(new ScrollingMovementMethod());
 
-        //Refresh the user list
-        Button buttonRefreshUsr = (Button) findViewById(R.id.btnRefreshUsr);
-        buttonRefreshUsr.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //OnClick actions here
-                mSC.send("WHO");
-            }
-        });
-
         //Send the input command
         cmd = (EditText) findViewById(R.id.cmdInput);
         Button buttonSend = (Button) findViewById(R.id.btnSendCmd);
@@ -85,9 +76,16 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            //Refresh the user list
+            case R.id.action_refresh:
+                mSC.send("WHO");
+                break;
+            //Do nothing
+            case R.id.action_settings:
+                break;
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
