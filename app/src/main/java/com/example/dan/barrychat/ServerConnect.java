@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,7 +119,9 @@ public class ServerConnect extends Thread{
                                 }
                             }
                             else {
-                                txtv.setText(message+"\n"+txtv.getText());
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                                String currentTimeStamp = dateFormat.format(new Date());
+                                txtv.setText(txtv.getText()+"\n"+message+" "+currentTimeStamp);
                             }
 
                         }
