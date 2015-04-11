@@ -85,6 +85,9 @@ public class ServerConnect extends Thread{
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()),true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+            //Automatically register as 'DanWu94'
+            out.println("REGISTER DanWu94");
+
             //Keep listening for messages from server
             while(!terminated)
             {
