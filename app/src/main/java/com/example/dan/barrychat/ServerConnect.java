@@ -131,7 +131,7 @@ public class ServerConnect extends Thread{
                             else {
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
                                 String currentTimeStamp = dateFormat.format(new Date());
-                                txtv.setText(txtv.getText()+"\n"+message+" "+currentTimeStamp);
+                                txtv.setText(txtv.getText()+"\n"+message+" "+"\n"+currentTimeStamp);
                             }
 
                         }
