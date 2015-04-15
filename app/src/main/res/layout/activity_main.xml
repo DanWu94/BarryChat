@@ -10,9 +10,9 @@
         android:text="confirm"
         android:id="@+id/confirm"
         android:onClick="confirmUserName"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="88dp"
+        android:layout_below="@+id/userNameEditText"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="280dp"

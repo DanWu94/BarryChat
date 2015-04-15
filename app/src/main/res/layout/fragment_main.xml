@@ -21,14 +21,22 @@
             android:layout_height="0dp"
             android:layout_weight="0.99">
 
-            <TextView
-                android:text="@string/list_title"
+            <LinearLayout
                 android:layout_width="150dp"
-                android:layout_height="fill_parent"
-                android:gravity="top"
-                android:maxLines = "200"
-                android:scrollbars = "vertical"
-                android:id="@+id/txtUserList" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_title"/>
+                <TextView
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:gravity="top"
+                    android:maxLines = "200"
+                    android:scrollbars = "vertical"
+                    android:id="@+id/txtUserList" />
+            </LinearLayout>
 
             <TextView
                 android:text="@string/barry"

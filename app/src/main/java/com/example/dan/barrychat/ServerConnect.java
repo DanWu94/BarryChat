@@ -110,7 +110,6 @@ public class ServerConnect extends Thread{
                             if(message.substring(0,3).equals("WHO")){
                                 try {
                                     JSONArray userListArr = new JSONArray(message.substring(3));
-                                    txtvList.setText("WHO IS ONLINE");
                                     for(int i=0;i<userListArr.length();i++){
                                         String userName = userListArr.getString(i);
                                         txtvList.setText(txtvList.getText()+"\n"+userName);
