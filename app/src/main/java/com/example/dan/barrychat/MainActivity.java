@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.EditText;
 
@@ -97,6 +99,18 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+
+        populateListView();
+    }
+
+    private void populateListView() {
+        String [] items = {"YOU","NEED","REFRESH","FIRST"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this,
+                R.layout.userlist_textview,
+                items);
+        ListView list = (ListView) findViewById(R.id.userListView);
+        list.setAdapter(adapter);
     }
 
 

@@ -96,7 +96,7 @@ public class ServerConnect extends Thread{
 
                     //Update GUI with any server responses
                     final TextView txtv = (TextView) parentref.findViewById(R.id.txtServerResponse);
-                    final TextView txtvList = (TextView) parentref.findViewById(R.id.txtUserList);
+                    //final TextView txtvList = (TextView) parentref.findViewById(R.id.txtUserList);
                     parentref.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -112,7 +112,7 @@ public class ServerConnect extends Thread{
                                     JSONArray userListArr = new JSONArray(message.substring(3));
                                     for(int i=0;i<userListArr.length();i++){
                                         String userName = userListArr.getString(i);
-                                        txtvList.setText(txtvList.getText()+"\n"+userName);
+                                        //txtvList.setText(txtvList.getText()+"\n"+userName);
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

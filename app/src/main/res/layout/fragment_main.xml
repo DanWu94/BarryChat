@@ -29,13 +29,10 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/list_title"/>
-                <TextView
+                <ListView
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
-                    android:gravity="top"
-                    android:maxLines = "200"
-                    android:scrollbars = "vertical"
-                    android:id="@+id/txtUserList" />
+                    android:id="@+id/userListView" />
             </LinearLayout>
 
             <TextView
