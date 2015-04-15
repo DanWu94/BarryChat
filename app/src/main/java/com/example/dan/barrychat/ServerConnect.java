@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import android.util.JsonReader;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -14,6 +16,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.json.JSONArray;
@@ -96,7 +99,8 @@ public class ServerConnect extends Thread{
 
                     //Update GUI with any server responses
                     final TextView txtv = (TextView) parentref.findViewById(R.id.txtServerResponse);
-                    //final TextView txtvList = (TextView) parentref.findViewById(R.id.txtUserList);
+                    final ListView list = (android.widget.ListView) parentref.findViewById(R.id.userListView);
+
                     parentref.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -110,10 +114,16 @@ public class ServerConnect extends Thread{
                             if(message.substring(0,3).equals("WHO")){
                                 try {
                                     JSONArray userListArr = new JSONArray(message.substring(3));
-                                    for(int i=0;i<userListArr.length();i++){
-                                        String userName = userListArr.getString(i);
-                                        //txtvList.setText(txtvList.getText()+"\n"+userName);
+                                    List<String> userNameList = new ArrayList<String>();
+                                    for(int i = 0; i < userListArr.length(); i++){
+                                        userNameList.add(userListArr.getString(i));
                                     }
+                                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                            parentref,
+                                            R.layout.userlist_textview,
+                                            userNameList);
+                                    list.setAdapter(adapter);
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
