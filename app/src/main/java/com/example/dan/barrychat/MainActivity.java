@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -101,6 +102,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         populateListView();
+        registerClickCallback();
     }
 
     private void populateListView() {
@@ -113,5 +115,17 @@ public class MainActivity extends ActionBarActivity {
         list.setAdapter(adapter);
     }
 
+
+    private void registerClickCallback() {
+        ListView list = (ListView) findViewById(R.id.userListView);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                TextView textview = (TextView) viewClicked;
+                mSC.send("INVITE "+textview.getText().toString());
+            }
+        });
+    }
 
 }
