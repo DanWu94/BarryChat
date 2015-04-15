@@ -4,7 +4,7 @@
     <string name="app_name">BarryChat</string>
     <string name="action_settings">Settings</string>
     <string name="send">Send</string>
-    <string name="cmd">Type Command</string>
+    <string name="cmd">Type Message</string>
     <string name="barry">Hello BarryBot!</string>
     <string name="list_title">WHO IS ONLINE</string>
     <string name="refresh_usr">Refresh</string>

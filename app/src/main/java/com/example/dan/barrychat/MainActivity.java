@@ -25,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
 
     EditText cmd;
 
+    String whoToMsg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 //OnClick actions here
                 String cmdString = cmd.getText().toString();
-                mSC.send(cmdString);
+                mSC.send("MSG "+whoToMsg+" "+cmdString);
             }
         });
 
@@ -123,7 +125,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 TextView textview = (TextView) viewClicked;
-                mSC.send("INVITE "+textview.getText().toString());
+                whoToMsg = textview.getText().toString();
+                mSC.send("INVITE "+whoToMsg);
             }
         });
     }
