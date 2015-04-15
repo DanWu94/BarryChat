@@ -1,6 +1,7 @@
 package com.example.dan.barrychat;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -24,42 +25,9 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_main);
+        setContentView(R.layout.activity_main);
 
         Log.i(LOGTAG, "onCreate entered");
-
-        // Connect to server and continue from here TODO
-        //// Your code should go here
-
-        //Initialize the ServerConnect
-        mSC = new ServerConnect(this);
-        mSC.start();
-
-        //Makes the receiving text area scrollable
-        TextView tv = (TextView) findViewById(R.id.txtServerResponse);
-        tv.setMovementMethod(new ScrollingMovementMethod());
-
-        //Send the input command
-        cmd = (EditText) findViewById(R.id.cmdInput);
-        Button buttonSend = (Button) findViewById(R.id.btnSendCmd);
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //OnClick actions here
-                String cmdString = cmd.getText().toString();
-                mSC.send(cmdString);
-            }
-        });
-
-        //This is an example of how to set events to button clicks
-        Button button = (Button) findViewById(R.id.btnKill);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //OnClick actions here
-                mSC.send("DISCONNECT");
-                System.exit(0);
-
-            }
-        });
 
     }
 
@@ -89,6 +57,46 @@ public class MainActivity extends ActionBarActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void confirmUserName(View view) {
+        EditText userName = (EditText) findViewById(R.id.userNameEditText);
+        // Connect to server and continue from here TODO
+        //// Your code should go here
+
+        //Initialize the ServerConnect
+        mSC = new ServerConnect(this);
+        mSC.start();
+
+        setContentView(R.layout.fragment_main);
+        mSC.send("REGISTER "+userName.getText().toString());
+
+        //Makes the receiving text area scrollable
+        TextView tv = (TextView) findViewById(R.id.txtServerResponse);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+
+        //Send the input command
+        cmd = (EditText) findViewById(R.id.cmdInput);
+        Button buttonSend = (Button) findViewById(R.id.btnSendCmd);
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //OnClick actions here
+                String cmdString = cmd.getText().toString();
+                mSC.send(cmdString);
+            }
+        });
+
+        //This is an example of how to set events to button clicks
+        Button button = (Button) findViewById(R.id.btnKill);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //OnClick actions here
+                mSC.send("DISCONNECT");
+                System.exit(0);
+
+            }
+        });
     }
 
 
