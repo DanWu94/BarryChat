@@ -68,13 +68,11 @@
                     android:padding="5dp"
                     android:background="@drawable/back"
                     android:layout_margin="3dp" />
-                <TextView
-                    android:layout_height="fill_parent"
+
+                <ListView
                     android:layout_width="fill_parent"
-                    android:gravity="top"
-                    android:maxLines = "200"
-                    android:scrollbars = "vertical"
-                    android:id="@+id/txtServerResponse"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/chatListView"
                     android:padding="5dp" />
             </LinearLayout>
         </LinearLayout>

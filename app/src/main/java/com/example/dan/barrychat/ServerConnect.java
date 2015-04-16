@@ -4,9 +4,12 @@ import android.app.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.util.JsonReader;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -101,11 +104,13 @@ public class ServerConnect extends Thread{
                 {
                     Log.i(LOGTAG,"MSG recv : "+message);
 
-                    //Update GUI with any server responses
-                    final TextView txtv = (TextView) parentref.findViewById(R.id.txtServerResponse);
                     final ListView list = (android.widget.ListView) parentref.findViewById(R.id.userListView);
 
                     parentref.runOnUiThread(new Runnable() {
+                        private List<Chat> myChats = new ArrayList<Chat>();
+
+
+
                         @Override
                         public void run() {
                             /**
@@ -183,9 +188,40 @@ public class ServerConnect extends Thread{
                             }else if(message.substring(0, 3).equals("MSG")){
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
                                 String currentTimeStamp = dateFormat.format(new Date());
-                                txtv.setText(txtv.getText() + "\n" + message + " " + "\n" + currentTimeStamp);
+                                myChats.add(new Chat(message.substring(4,6),message.substring(6),currentTimeStamp));
+                                populateListView();
                             }else{}
 
+                        }
+
+                        private void populateListView() {
+                            ArrayAdapter<Chat> cAdapter = new myListAdapter();
+                            ListView cList = (ListView)parentref.findViewById(R.id.chatListView);
+                            cList.setAdapter(cAdapter);
+                        }
+
+                        class myListAdapter extends ArrayAdapter<Chat> {
+                            public myListAdapter() {
+                                super(parentref, R.layout.chat_item, myChats);
+                            }
+
+                            @Override
+                            public View getView(int position, View convertView, ViewGroup parent) {
+                                View itemView = convertView;
+                                if(itemView == null){
+                                    itemView = parentref.getLayoutInflater().inflate(R.layout.chat_item,parent,false);
+                                }
+
+                                Chat currentChat = myChats.get(position);
+
+                                TextView name = (TextView)itemView.findViewById(R.id.item_name);
+                                name.setText(currentChat.name);
+                                TextView word = (TextView)itemView.findViewById(R.id.item_word);
+                                word.setText(currentChat.word);
+                                TextView time = (TextView)itemView.findViewById(R.id.item_time);
+                                time.setText(currentChat.time);
+                                return itemView;
+                            }
                         }
                     });
                 }

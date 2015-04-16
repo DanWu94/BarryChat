@@ -76,10 +76,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.fragment_main);
         mSC.send("REGISTER "+userName.getText().toString());
 
-        //Makes the receiving text area scrollable
-        TextView tv = (TextView) findViewById(R.id.txtServerResponse);
-        tv.setMovementMethod(new ScrollingMovementMethod());
-
         //Send the input command
         cmd = (EditText) findViewById(R.id.cmdInput);
         ImageButton buttonSend = (ImageButton) findViewById(R.id.btnSendCmd);
