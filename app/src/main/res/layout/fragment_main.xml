@@ -35,14 +35,24 @@
                     android:id="@+id/userListView" />
             </LinearLayout>
 
-            <TextView
-                android:text="@string/barry"
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="top"
-                android:maxLines = "200"
-                android:scrollbars = "vertical"
-                android:id="@+id/txtServerResponse" />
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conversation"/>
+                <TextView
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:gravity="top"
+                    android:maxLines = "200"
+                    android:scrollbars = "vertical"
+                    android:id="@+id/txtServerResponse" />
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

@@ -3,16 +3,15 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="confirm"
-        android:id="@+id/confirm"
-        android:onClick="confirmUserName"
-        android:layout_marginTop="88dp"
-        android:layout_below="@+id/userNameEditText"
-        android:layout_centerHorizontal="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/barry"
+        android:id="@+id/textView"
+        android:layout_above="@+id/userNameEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="72dp" />
 
     <EditText
         android:layout_width="280dp"
@@ -24,5 +23,16 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        android:id="@+id/confirm"
+        android:onClick="confirmUserName"
+        android:layout_marginTop="88dp"
+        android:layout_below="@+id/userNameEditText"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
 

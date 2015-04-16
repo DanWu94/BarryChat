@@ -8,5 +8,6 @@
     <string name="barry">Hello BarryBot!</string>
     <string name="list_title">WHO IS ONLINE</string>
     <string name="refresh_usr">Refresh</string>
+    <string name="conversation">CONVERSATION</string>
 
 </resources>
