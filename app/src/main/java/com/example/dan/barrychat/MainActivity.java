@@ -104,7 +104,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void populateListView() {
-        String [] items = {"YOU","NEED","REFRESH","FIRST"};
+        String [] items = {"PLEASE","CLICK","REFRESH","BUTTON"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 R.layout.userlist_textview,
