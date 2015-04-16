@@ -2,6 +2,7 @@ package com.example.dan.barrychat;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -51,10 +53,6 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            //Refresh the user list
-            case R.id.action_refresh:
-                mSC.send("WHO");
-                break;
             //Do nothing
             case R.id.action_settings:
                 break;
@@ -100,6 +98,14 @@ public class MainActivity extends ActionBarActivity {
                 mSC.send("DISCONNECT");
                 System.exit(0);
 
+            }
+        });
+
+        ImageButton buttonRefresh = (ImageButton) findViewById(R.id.btnRefresh);
+        buttonRefresh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //OnClick actions here
+                mSC.send("WHO");
             }
         });
 

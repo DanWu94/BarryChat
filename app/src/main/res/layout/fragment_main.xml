@@ -24,15 +24,31 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
+                android:orientation="vertical"
+                android:weightSum="1">
+                <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/list_title"/>
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/list_title" />
+                    <ImageButton
+                        android:id="@+id/btnRefresh"
+                        android:src="@drawable/ic_action_refresh"
+                        android:background="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
                 <ListView
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
-                    android:id="@+id/userListView" />
+                    android:id="@+id/userListView"
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,21 +57,20 @@
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/conversation"/>
+                    android:layout_height="50dp"
+                    android:text="@string/conversation"
+                    android:gravity="center_vertical"
+                    android:padding="5dp" />
                 <TextView
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:gravity="top"
                     android:maxLines = "200"
                     android:scrollbars = "vertical"
-                    android:id="@+id/txtServerResponse" />
+                    android:id="@+id/txtServerResponse"
+                    android:padding="5dp" />
             </LinearLayout>
-
-
-
         </LinearLayout>
-
 
         <EditText
             android:layout_width="fill_parent"
