@@ -207,7 +207,8 @@ public class ServerConnect extends Thread{
                             }else if(message.substring(0, 3).equals("MSG")){
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
                                 String currentTimeStamp = dateFormat.format(new Date());
-                                myChats.add(new Chat(message.substring(4,6),message.substring(6),currentTimeStamp));
+                                String msg = message.substring(4);
+                                myChats.add(new Chat(msg.substring(0,msg.indexOf(' ')),msg.substring(msg.indexOf(' ')+1),currentTimeStamp));
                                 populateListView();
 
                             }else{}
