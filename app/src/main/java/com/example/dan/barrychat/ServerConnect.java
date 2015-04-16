@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -114,7 +115,15 @@ public class ServerConnect extends Thread{
                              *
                              *
                              */
-                            if(message.substring(0,3).equals("WHO")){
+                            if(message.substring(0,6).equals("ACCEPT")){
+                                Toast toast = Toast.makeText(parentref, message.substring(7)+" has accepted your invitation", Toast.LENGTH_LONG);
+                                toast.show();
+
+                            }else if(message.substring(0,7).equals("DECLINE")){
+                                Toast toast = Toast.makeText(parentref, message.substring(8)+" has declined your invitation", Toast.LENGTH_LONG);
+                                toast.show();
+
+                            }else if(message.substring(0,3).equals("WHO")){
                                 try {
                                     JSONArray userListArr = new JSONArray(message.substring(3));
                                     List<String> userNameList = new ArrayList<String>();
