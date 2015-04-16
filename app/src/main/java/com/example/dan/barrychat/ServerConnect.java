@@ -115,7 +115,23 @@ public class ServerConnect extends Thread{
                              *
                              *
                              */
-                            if(message.substring(0,6).equals("ACCEPT")){
+
+                            if(message.substring(0,4).equals("INFO")){
+                                Toast toast = Toast.makeText(parentref, message.substring(5), Toast.LENGTH_LONG);
+                                toast.show();
+
+                            }else if(message.substring(0,5).equals("ERROR")){
+                                AlertDialog.Builder errorDialog = new AlertDialog.Builder(parentref);
+                                errorDialog.setTitle("Error");
+                                errorDialog.setMessage(message.substring(6));
+                                errorDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {}
+                                });
+                                errorDialog.create();
+                                errorDialog.show();
+
+                            }else if(message.substring(0,6).equals("ACCEPT")){
                                 Toast toast = Toast.makeText(parentref, message.substring(7)+" has accepted your invitation", Toast.LENGTH_LONG);
                                 toast.show();
 
