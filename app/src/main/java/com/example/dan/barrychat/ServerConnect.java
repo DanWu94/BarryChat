@@ -180,11 +180,11 @@ public class ServerConnect extends Thread{
                                 });
                                 inviteDialog.create();
                                 inviteDialog.show();
-                            } else {
+                            }else if(message.substring(0, 3).equals("MSG")){
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
                                 String currentTimeStamp = dateFormat.format(new Date());
                                 txtv.setText(txtv.getText() + "\n" + message + " " + "\n" + currentTimeStamp);
-                            }
+                            }else{}
 
                         }
                     });
