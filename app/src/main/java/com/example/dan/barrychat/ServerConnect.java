@@ -80,6 +80,23 @@ public class ServerConnect extends Thread{
         }
     }
 
+    public void sendMsg(String name,String toWhom, String word)
+    {
+        try
+        {
+            String cmd = "MSG "+toWhom+" "+word;
+            Log.i(LOGTAG,"Sending command: "+cmd);
+            out.println(cmd);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+            String time = dateFormat.format(new Date());
+            myChats.add(new Chat(name,word,time));
+        }
+        catch(Exception e)
+        {
+            Log.e(LOGTAG,"Failed to send command : "+e);
+        }
+    }
+
     /**
      * Main thread loop that grabs incoming messages
      */

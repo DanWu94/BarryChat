@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void confirmUserName(View view) {
-        EditText userName = (EditText) findViewById(R.id.userNameEditText);
+        final EditText userName = (EditText) findViewById(R.id.userNameEditText);
         // Connect to server and continue from here TODO
         //// Your code should go here
 
@@ -81,9 +81,7 @@ public class MainActivity extends ActionBarActivity {
         ImageButton buttonSend = (ImageButton) findViewById(R.id.btnSendCmd);
         buttonSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //OnClick actions here
-                String cmdString = cmd.getText().toString();
-                mSC.send("MSG "+whoToMsg+" "+cmdString);
+                mSC.sendMsg(userName.getText().toString(),whoToMsg,cmd.getText().toString());
             }
         });
 
