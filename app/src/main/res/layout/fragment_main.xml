@@ -79,27 +79,25 @@
             </LinearLayout>
         </LinearLayout>
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/cmd"
-            android:id="@+id/cmdInput" />
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
 
-            <Button
-                android:layout_width="100dp"
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:id="@+id/btnKill"
-                android:text="Kill" />
-            <Button
-                android:layout_width="100dp"
+                android:layout_weight="0.99"
+                android:hint="@string/cmd"
+                android:id="@+id/cmdInput" />
+
+            <ImageButton
+                android:src="@drawable/ic_action_send"
+                android:background="@null"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:id="@+id/btnSendCmd"
                 android:text="@string/send" />
 

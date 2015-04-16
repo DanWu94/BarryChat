@@ -9,5 +9,6 @@
     <string name="list_title">USER LIST</string>
     <string name="refresh_usr">Refresh</string>
     <string name="conversation">CONVERSATION</string>
+    <string name="kill">disconnect</string>
 
 </resources>

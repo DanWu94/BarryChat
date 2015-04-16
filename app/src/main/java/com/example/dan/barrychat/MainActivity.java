@@ -53,8 +53,9 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            //Do nothing
-            case R.id.action_settings:
+            case R.id.action_kill:
+                mSC.send("DISCONNECT");
+                System.exit(0);
                 break;
             default:
                 break;
@@ -81,23 +82,12 @@ public class MainActivity extends ActionBarActivity {
 
         //Send the input command
         cmd = (EditText) findViewById(R.id.cmdInput);
-        Button buttonSend = (Button) findViewById(R.id.btnSendCmd);
+        ImageButton buttonSend = (ImageButton) findViewById(R.id.btnSendCmd);
         buttonSend.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //OnClick actions here
                 String cmdString = cmd.getText().toString();
                 mSC.send("MSG "+whoToMsg+" "+cmdString);
-            }
-        });
-
-        //This is an example of how to set events to button clicks
-        Button button = (Button) findViewById(R.id.btnKill);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //OnClick actions here
-                mSC.send("DISCONNECT");
-                System.exit(0);
-
             }
         });
 
