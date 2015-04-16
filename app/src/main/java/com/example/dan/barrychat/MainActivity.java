@@ -123,6 +123,8 @@ public class MainActivity extends ActionBarActivity {
                 TextView textview = (TextView) viewClicked;
                 whoToMsg = textview.getText().toString();
                 mSC.send("INVITE "+whoToMsg);
+                TextView whoToText = (TextView) findViewById(R.id.whoToTextView);
+                whoToText.setText("To \""+whoToMsg+"\"");
             }
         });
     }

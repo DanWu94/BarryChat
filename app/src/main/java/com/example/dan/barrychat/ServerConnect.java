@@ -132,13 +132,13 @@ public class ServerConnect extends Thread{
                                 errorDialog.show();
 
                             }else if(message.substring(0,6).equals("ACCEPT")){
-                                Toast toast = Toast.makeText(parentref, message.substring(7)+" has accepted your invitation", Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(parentref, "\""+message.substring(7)+"\" has accepted your invitation", Toast.LENGTH_SHORT);
                                 toast.show();
 
                             }else if(message.substring(0,7).equals("DECLINE")){
                                 AlertDialog.Builder declineDialog = new AlertDialog.Builder(parentref);
                                 declineDialog.setTitle("Declination");
-                                declineDialog.setMessage(message.substring(8)+" has declined your invitation");
+                                declineDialog.setMessage("\""+message.substring(8)+"\" has declined your invitation");
                                 declineDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {}
@@ -165,7 +165,7 @@ public class ServerConnect extends Thread{
                             }else if (message.substring(0, 6).equals("INVITE")) {
                                 AlertDialog.Builder inviteDialog = new AlertDialog.Builder(parentref);
                                 inviteDialog.setTitle("Invitation");
-                                inviteDialog.setMessage("You have received an invitation from"+message.substring(6));
+                                inviteDialog.setMessage("You have received an invitation from \""+message.substring(7)+"\"");
                                 inviteDialog.setNegativeButton("DECLINE", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
