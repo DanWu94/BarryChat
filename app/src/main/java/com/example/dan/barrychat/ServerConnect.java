@@ -2,6 +2,9 @@ package com.example.dan.barrychat;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.util.JsonReader;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -127,11 +130,28 @@ public class ServerConnect extends Thread{
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                            }
-                            else {
+                            }else if (message.substring(0, 6).equals("INVITE")) {
+                                AlertDialog.Builder inviteDialog = new AlertDialog.Builder(parentref);
+                                inviteDialog.setTitle("Invitation");
+                                inviteDialog.setMessage("You have received an invitation from"+message.substring(6));
+                                inviteDialog.setNegativeButton("DECLINE", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        out.println("DECLINE"+message.substring(6));
+                                    }
+                                });
+                                inviteDialog.setPositiveButton("ACCEPT", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        out.println("ACCEPT"+message.substring(6));
+                                    }
+                                });
+                                inviteDialog.create();
+                                inviteDialog.show();
+                            } else {
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
                                 String currentTimeStamp = dateFormat.format(new Date());
-                                txtv.setText(txtv.getText()+"\n"+message+" "+"\n"+currentTimeStamp);
+                                txtv.setText(txtv.getText() + "\n" + message + " " + "\n" + currentTimeStamp);
                             }
 
                         }
