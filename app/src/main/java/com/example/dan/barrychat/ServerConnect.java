@@ -50,6 +50,8 @@ public class ServerConnect extends Thread{
     private PrintWriter out = null;
     private BufferedReader in = null;
 
+    private List<Chat> myChats = new ArrayList<Chat>();
+
     Activity parentref;
 
     /**
@@ -107,7 +109,7 @@ public class ServerConnect extends Thread{
                     final ListView list = (android.widget.ListView) parentref.findViewById(R.id.userListView);
 
                     parentref.runOnUiThread(new Runnable() {
-                        private List<Chat> myChats = new ArrayList<Chat>();
+
 
 
 
@@ -190,6 +192,7 @@ public class ServerConnect extends Thread{
                                 String currentTimeStamp = dateFormat.format(new Date());
                                 myChats.add(new Chat(message.substring(4,6),message.substring(6),currentTimeStamp));
                                 populateListView();
+
                             }else{}
 
                         }
@@ -198,6 +201,7 @@ public class ServerConnect extends Thread{
                             ArrayAdapter<Chat> cAdapter = new myListAdapter();
                             ListView cList = (ListView)parentref.findViewById(R.id.chatListView);
                             cList.setAdapter(cAdapter);
+                            cList.setSelection(cAdapter.getCount() - 1);
                         }
 
                         class myListAdapter extends ArrayAdapter<Chat> {
